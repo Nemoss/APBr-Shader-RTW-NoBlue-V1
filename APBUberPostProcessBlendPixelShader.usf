@@ -4,7 +4,7 @@
 * \brief Pixel shader for blending the blurred bloom colors with the scene color.
 * Also performs tone mapping.
 *
-* \ Modifided Version of the RTW shader, forced it to use ToneMappedColour to disable the blue. V1
+* \Modifided Version of the RTW shader, forced it to use ToneMappedColour to disable the blue. V1
 *
 * \b NOW_OWNER: dreamss				30/11/2012 <BR>
 * \b WAS_OWNER: SJT           03/11/2008 <BR>
