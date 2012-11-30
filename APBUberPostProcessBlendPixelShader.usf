@@ -4,10 +4,14 @@
 * \brief Pixel shader for blending the blurred bloom colors with the scene color.
 * Also performs tone mapping.
 *
-* \b NOW_OWNER: SJT           03/11/2008 <BR>
+* \ Modifided Version of the RTW shader, forced it to use ToneMappedColour to disable the blue. V1
+*
+* \b NOW_OWNER: dreamss				30/11/2012 <BR>
+* \b WAS_OWNER: SJT           03/11/2008 <BR>
 * \b WAS_OWNER: Hugh Malan    20/02/2008 <BR>
 *
-* (c) 2008 Realtime Worlds Ltd.
+* (c) 2008 Realtime Worlds Ltd. - RIP 9/16/2010
+* 
 ****************************************************************************************/
 
 #include "Common.usf"
@@ -113,15 +117,4 @@ void Main(
 	//half3 LinearColor = AdjustedColour * GammaColorScale + GammaOverlayColor;
 	//OutColor = float4(pow(saturate(LinearColor), GammaInverse), sceneColor.a);
 	OutColor = float4(ToneMappedColour, sceneColor.a);
- //OutColor = float4(ToneMappedColour, FocusedSceneColorAndDepth.a);
-	if(SceneUV.x >= 0.4995 && SceneUV.x <= 0.5005 && SceneUV.y >= 0.499 && SceneUV.y <= 0.501)
-	{
-	OutColor = 1 - OutColor;
-	OutColor.a = sceneColor.a;
-	}
-	else if (SceneUV.x >= 0.4990 && SceneUV.x <= 0.5010 && SceneUV.y >= 0.498 && SceneUV.y <= 0.502)
-	{
-	OutColor = float4(255, 0, 0, sceneColor.a);
-	}
-	
 }
